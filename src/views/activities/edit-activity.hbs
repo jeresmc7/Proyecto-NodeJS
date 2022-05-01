@@ -1,0 +1,80 @@
+<div class="col-md-4 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fa fa-pencil-square" aria-hidden="true"></i> Editar Actividad</h3>
+        </div>
+        <div class="card-body">
+            <!-- Hay que usar methodOverride porque en los forms no se puede hacer PUT -->
+            <form action="/activity/edit/{{activity._id}}?_method=PUT" method="POST">
+                <!-- Por el .lean() se pone ._id en vez de .id (ir probando cual es)-->
+                <!-- No se porque pero se usa un input Hidden -->
+                <input type="hidden" name="_method" value="PUT">
+                <div class="form-group">
+                    Título
+                    <input type="text" name="name" class="form-control" value="{{activity.name}}" required>
+                </div>
+                <div class="form-group">
+                    Descripción
+                    <textarea name="description" class="form-control" required>{{activity.description}}</textarea>
+                </div>
+                <div class="form-group">
+                    Lugar de la actividad
+                    <input type="text" name="place" class="form-control" value="{{activity.place}}" required>
+                </div>
+
+                <div class="form-group">
+                    Categorías:
+                    {{!-- {{tagsRender.[0].actualTag}} --}}
+                    <select class="form-control" name="category">
+                        {{#ifCond tagsRender.[0].actualTag '==' 'Todas'}}
+                        <option value="99999" selected>Todas</option>
+                        {{else}}
+                        <option value="99999">Todas</option>
+                        {{/ifCond}}
+
+                        {{#each tagsRender}}
+                        {{#ifCond actualTag '==' name}}
+                        <option value={{id}} selected>{{name}}</option>
+                        {{else}}
+                        <option value={{id}}>{{name}}</option>
+                        {{/ifCond}}
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="formControlRange">Cantidad máxima de personas</label>
+                    <input type="range" id="rangeInput" name="maxPeople" min="0" max="10" value="{{activity.maxPeople}}"
+                        oninput="amount.value=rangeInput.value">
+
+                    <output id="amount" name="amount" for="rangeInput">{{activity.maxPeople}}</output>
+                </div>
+
+                <div class="form-group">
+                    <div class='input-group'>
+                        Fecha desde
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        </div>
+                        <input size="16" type="text" class="form-control" id="datetimepickerFrom"
+                            placeholder="Fecha desde" name="dFrom" value="{{activity.dFrom}}" readonly required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class='input-group'>
+                        Fecha hasta
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        </div>
+                        <input size="16" type="text" class="form-control" id="datetimepickerTo"
+                            placeholder="Fecha hasta" name="dTo" value="{{activity.dTo}}" readonly required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

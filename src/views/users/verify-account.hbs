@@ -1,0 +1,43 @@
+<div class="jumbotron">
+    <h2 class="display-4">Por favor verifica tu cuenta</h2>
+    <p class="lead"></p>
+    <hr class="my-4">
+    <h5>Se enviará un email de verificacion a la dirección de correo <span id="userEmail">{{user.email}}</span></h5>
+    <p>Si introduces un codigo incorrecto, deberas pulsar nuevamente el boton de enviar email</p>
+    <p class="lead">
+    <form method="POST">
+        <input class="btn btn-primary p-2 px-4 mx-1" type="button" value="Enviar email" onclick="sendEmail()">
+    </form>
+
+    <form action="/signup/verify-account/{{user._id}}/{{user.verifyCode}}" method="POST">
+        <hr class="my-4">
+        <input class="form-control w-50" type="name" id="verifyCode" name="verifyCode" placeholder="Introduce el codigo que recibiste">
+        <div class="form-group">
+            <button class="btn btn-primary p-2 px-4 mx-1 mt-3">
+                Verificar
+            </button>
+        </div>
+    </form>
+
+    </p>
+</div>
+
+<span id="verifyID" style="display: none;">{{user.verifyCode}}</span>
+
+<script type="text/javascript">
+    function sendEmail() {
+        Email.send({
+            SecureToken : "899a6469-25e3-459e-b03e-c2a6036edca0",
+            //Host: "smtp.gmail.com",
+            //Username: "rosarioactivaproyecto@gmail.com",
+            //Password: "rosactproy1234",
+            To: document.getElementById('userEmail').innerText,
+            From: "rosarioactivaproyecto@gmail.com",
+            Subject: "Verificacion de cuenta",
+            Body: "Para verificar tu cuenta has introduce el siguiente codigo en la pagina " + "<h1>" + document.getElementById('verifyID').innerText + "</h1>"
+
+        }).then(
+            message => alert("Email enviado a su casilla de correo (revisar casilla de Spam)")
+        );
+    }
+</script>

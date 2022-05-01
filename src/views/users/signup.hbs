@@ -1,0 +1,59 @@
+<div class="row steam-signup-form">
+    <div class="col-md-4 col-sm-7 col-11 mx-auto front">
+        <h1 class="title">Crea tu usuario</h1>
+        <p>Explora lo que puedes hacer</p>
+        <p>en la ciudad de Rosario</p>
+        <p><strong>Unirse y su uso es gratis</strong></p>
+
+        <form class="form" action="/signup" method="POST">
+            <label class="form__label" for="name">Nombre <span class="form__tooltip"
+                    data-tooltip="Ingresa tu nombre y apellido">?</span></label>
+            <input class="form-control form__text" type="name" id="name" name="name" value={{name}}>
+
+            <label class="form__label" for="email">Email <span class="form__tooltip"
+                    data-tooltip="Ingresa tu direccion de email">?</span></label>
+            <input class="form-control form__text" type="email" id="email" name="email" value={{email}}>
+
+            <label class="form__label" for="tel">Teléfono <span class="form__tooltip"
+                    data-tooltip="Ingresa tu telefono (solo numeros)">?</span></label>
+            <input class="form-control form__text" type="name" id="tel" name="tel" value={{tel}}>
+
+            <label class="form__label" for="password">Contraseña <span class="form__tooltip"
+                    data-tooltip="Longitud minima de 4 caracteres">?</span></label>
+            <input class="form-control form__text" type="password" id="password" name="password">
+            <label class="form__label" for="confirm_password">Confirmar contraseña</label>
+            <input class="form-control form__text" type="password" id="confirm_password" name="confirm_password">
+
+            <h5 class="form__label mb-1"> ¿Quieres tener una foto de perfil? </h5>
+            <p class="mb-4"><a href="https://es.gravatar.com/" class="gravatarLink">Registrate en Gravatar y carga tu
+                    foto ahi</a></p>
+
+
+            <button class="button btn btn-primary">Registrarse</button>
+            <a href="/signIn" class="fineprint">Ya tengo un usuario</a>
+
+        </form>
+    </div>
+
+</div>
+
+<style>
+    #main-container {
+        background: linear-gradient(to bottom, rgba(66, 74, 92, 0.8) 0%, rgba(39, 43, 54, 0.8) 100%), url("/public/img/ImagenesRosario/RosarioNoche.jpg") no-repeat;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-size: cover;
+        height: 100%;
+    }
+
+    .gravatarLink {
+        color: rgba(86, 250, 171, 0.979);
+        text-decoration: none;
+    }
+
+    .gravatarLink:hover {
+        color: rgba(86, 250, 171, 0.728);
+        text-decoration: none;
+    }
+</style>

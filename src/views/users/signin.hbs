@@ -1,0 +1,64 @@
+{{!-- <img src="/public/img/escudorosario.jpeg" class="rounded-circle mx-auto d-block m-4 logo"> --}}
+
+
+<div class="row steam-signup-form">
+    <div class="col-lg-4 col-md-6 col-sm-7 col-11 mx-auto front">
+        <h1 class="title">Iniciar sesión</h1>
+
+        <form class="form" action="/signin" method="POST">
+            <label class="form__label" for="email">Email </label>
+            <input class="form-control form__text" type="email" id="email" name="email">
+            <label class="form__label" for="password">Contraseña</label>
+            <input class="form-control form__text" type="password" id="password" name="password">
+
+            <button class="button btn btn-primary">Ingresar</button>
+            <a href="/signUp" class="fineprint">Todavía no tengo usuario</a>
+            <hr>
+            <div class="d-flex justify-content-between">
+                <div class="shadow rounded-lg p-2">
+                    <a href="/signUp/pre-verify-account" class="fineprint">Verificar usuario</a>
+                </div>
+                <div class="shadow rounded-lg p-2">
+                    <a href="/signin/forgotten-password" class="fineprint">Olvidé mi contraseña</a>
+                </div>
+                
+                
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    #main-container {
+        background: linear-gradient(to bottom, rgba(66, 74, 92, 0.8) 0%, rgba(39, 43, 54, 0.8) 100%), url("/public/img/ImagenesRosario/RosarioNoche.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-size: cover;
+    }
+
+    @media(min-height: 600px) and (min-width: 600px) {
+        #footer {
+            margin-top: 10rem;
+        }
+    }
+
+    @media(min-height: 700px) and (min-width: 600px) {
+        #footer {
+            margin-top: 12rem;
+        }
+    }
+
+    @media(min-height: 865px) {
+        #footer {
+            margin-top: 14rem;
+        }
+    }
+</style>
+
+{{!-- var root = document.documentElement;
+
+document.addEventListener('resize', () => {
+root.style.setProperty('--screen-x', window.screenX)
+root.style.setProperty('--screen-y', window.screenY)
+}) --}}

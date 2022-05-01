@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h2 class="actTitle"> {{activity.attributes.name}}</h2>
+                <h3 class="ruleTitle"> {{rule.attributes.text}}</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <p>{{{activity.attributes.text.value}}}</p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <div class="text-center">
+                            <img src="{{activity.attributes.images.[0].self}}" alt="" class="img-fluid">
+                            <!-- Con fluid ocupa el contenedor -->
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mt-2">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3><i class="fa fa-map-marker" aria-hidden="true"></i> Lugar</h3>
+            </div>
+
+            <div class="card-body">
+                <p><strong>Lugar del evento:</strong> {{#if actualOccurence.attributes.eventual_name}}
+                    {{actualOccurence.attributes.eventual_name}} {{else}} No hay información del lugar{{/if}}<br>
+                    <hr>
+                    <strong>Dirección del evento:</strong> {{#if actualOccurence.attributes.eventual_direccion}}
+                    {{actualOccurence.attributes.eventual_direccion}} {{else}} No hay información de la dirección del
+                    evento{{/if}}<br>
+                    <hr>
+                    <strong> Distrito:</strong> {{#if district.attributes.name}} {{district.attributes.name}} {{else}}
+                    No hay información del distrito{{/if}}
+                    <hr>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6 mt-2">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3><i class="fa fa-fire" aria-hidden="true"></i> Próximas fechas</h3>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    {{#if occurences}}
+                    {{#each occurences}}
+                    <div class="col-md-6">
+                        <p><strong>Desde: </strong>{{format2 attributes.date_start}}<br>
+                            <strong>Hasta: </strong>{{format2 attributes.date_end}}<br>
+                            {{#if attributes.suspendida}}
+                            <strong>Fecha suspendida</strong>
+                            {{else}}
+                            {{/if}}
+                            <hr>
+                        </p>
+                    </div>
+                    {{/each}}
+                    {{else}}
+                       No hay información sobre proximas fechas
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @media(max-width: 800px) {
+        .actTitle {
+            padding-right: 10px;
+            border-right: 1.5px solid #333;
+        }
+
+        .ruleTitle {
+            padding-left: 10px;
+        }
+    }
+</style>

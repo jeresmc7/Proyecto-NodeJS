@@ -1,0 +1,256 @@
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h2>{{activity.name}}</h2>
+
+                {{#if organizatorUser}}
+
+                <a href="/activity/{{activity._id}}/details" class="button p-3 activity"> <i class="fa fa-info"
+                        aria-hidden="true"></i> Ver detalles</a>
+
+
+
+                {{else}}
+
+                {{#if oldActivity}}
+                <button class="btn btn-success p-3" id="btn-inscript" disabled>
+                    <i class="fa fa-hand-paper-o" aria-hidden="true"></i> Esta actividad ya pasó
+                </button>
+                {{!-- <button class="btn btn-success p-3" id="btn-inscript">
+                    <i class="fa fa-hand-paper-o" aria-hidden="true"></i> Ver detalles
+                </button> --}}
+                {{else}}
+                {{#if inscriptedUser}}
+                {{!-- <form action="/activity/{{activity._id}}/inscript" method="POST">
+                    <div class="form-group">
+                        <button class="btn btn-success p-3" id="btn-inscript" disabled>
+                            <i class="fa fa-hand-paper-o" aria-hidden="true"></i> Ya estas inscripto
+                        </button>
+                    </div>
+                </form> --}}
+                <form action="/activity/{{activity._id}}/uninscript" method="POST">
+                    <div class="form-group">
+                        <button class="btn btn-danger p-3 mt-2">
+                            <i class="fa fa-times" aria-hidden="true"></i> Cancelar inscripción
+                        </button>
+                    </div>
+                </form>
+                {{else}}
+                {{#if fullActivity}}
+                <button class="btn btn-danger p-3" id="btn-inscript" disabled>
+                    <i class="fa fa-hand-paper-o" aria-hidden="true"></i> Esta actividad esta completa
+                </button>
+                {{else}}
+                <form action="/activity/{{activity._id}}/inscript" method="POST">
+                    <div class="form-group">
+                        <button class="btn btn-success p-3 mt-2" id="btn-inscript">
+                            <i class="fa fa-hand-paper-o" aria-hidden="true"></i> Inscribirse
+                        </button>
+                    </div>
+                </form>
+                {{/if}}
+                {{/if}}
+                {{/if}}
+                {{/if}}
+
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-4 mb-2">
+                        <p class="font-weight-bold closer mt-2">Categoría: </p>
+                        <p class="font-weight-light closer">{{categoryName}}</p>
+                        <p class="font-weight-bold closer mt-2">Descripción: </p>
+                        <p class="card-subtitle closer">{{activity.description}}</p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="text-center">
+                            <img src="/public/upload/{{activity.pictureFileName}}" alt="" class="img-fluid">
+                            <!-- Con fluid ocupa el contenedor -->
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <p class="font-weight-bold closer mt-2">Organizador/a: </p>
+                        <p class="font-weight-light closer">{{user.name}}</p>
+                        <p class="font-weight-bold closer mt-2">Inicio: </p>
+                        <p class="font-weight-light closer">{{format activity.dFrom}}</p>
+                        <p class="font-weight-bold closer mt-2">Fin: </p>
+                        <p class="font-weight-light closer">{{format activity.dTo}}</p>
+                        <p class="font-weight-bold closer mt-2">Personas inscriptas: </p>
+                        <p class="font-weight-light closer">{{activityParticipants}}</p>
+                        <p class="font-weight-bold closer mt-2">Lugares disponibles: </p>
+                        <p class="font-weight-light closer">{{placesAvailable}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                {{#if likedUser}}
+                <form action="/activity/{{activity._id}}/like" method="POST">
+                    <div class="form-group">
+                        <button class="btn btn-primary p-2 mx-1 mt-3" disabled>
+                            <i class="fa fa-thumbs-up" aria-hidden="true"></i>Recomendada
+                        </button>
+                    </div>
+                </form>
+
+                {{else}}
+                <form action="/activity/{{activity._id}}/like" method="POST">
+                    <div class="form-group">
+                        <button class="btn btn-primary p-2 mx-1 mt-3">
+                            <i class="fa fa-thumbs-up" aria-hidden="true"></i>Recomendar
+                        </button>
+                    </div>
+                </form>
+
+                {{/if}}
+                {{#if organizatorUser}}
+
+                <button class="btn btn-danger ml-1 mr-4 p-2" id="btn-report" disabled>
+                    <i class="fa fa-bullhorn" aria-hidden="true"></i> Denuncias: {{activity.reports}}
+                </button>
+                {{else}}
+
+                {{#if reportedUser}}
+                <form action="/activity/{{activity._id}}/report" method="POST">
+                    <div class="form-group">
+                        <button class="btn btn-danger p-2 mt-3" disabled>
+                            <i class="fa fa-bullhorn" aria-hidden="true"></i> Denunciada
+                        </button>
+                    </div>
+                </form>
+                {{!-- <button class="btn btn-danger ml-1 mr-4" id="btn-report" data-id="{{activity._id}}" disabled>
+                    <i class="fa fa-bullhorn" aria-hidden="true"></i> Denunciar
+                </button> --}}
+                {{else}}
+                {{!-- <button class="btn btn-danger ml-1 mr-4" id="btn-report" data-id="{{activity._id}}">
+                    <i class="fa fa-bullhorn" aria-hidden="true"></i> Denunciar
+                </button> --}}
+
+                <!-- Button trigger modal -->
+                <button class="btn btn-danger ml-1 mr-4 p-2" data-toggle="modal" data-target="#exampleModalCenter">
+                    <i class="fa fa-bullhorn" aria-hidden="true"></i> Denunciar
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">¿Cuál es el motivo?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-check mt-1">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1" checked>
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Actividad inapropiada
+                                    </label>
+                                </div>
+                                <div class="form-check mt-1">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault2">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Imágenes inapropiades
+                                    </label>
+                                </div>
+                                <div class="form-check mt-1">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault3">
+                                    <label class="form-check-label" for="flexRadioDefault3">
+                                        Palabras inapropiadas
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary p-2" data-dismiss="modal">Cerrar</button>
+                                <form action="/activity/{{activity._id}}/report" method="POST">
+                                    <div class="form-group">
+                                        <button id="close" class="btn btn-danger p-2 mt-3">
+                                            <i class="fa fa-bullhorn" aria-hidden="true"></i> Confirmar
+
+                                        </button>
+                                    </div>
+                                </form>
+                                {{!-- <button class="btn btn-danger" id="btn-report" data-id="{{activity._id}}">
+                                    Confirmar</button> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+
+                {{/if}}
+
+
+
+                <p>
+                    <i class="fa fa-heart mx-1" aria-hidden="true"></i>
+                    <span class="likes-count ml-2 mr-1">{{activity.likes}}</span>
+                </p>
+                <p>
+                    <i class="fa fa-eye mx-1" aria-hidden="true"></i> <span class="ml-2 mr-1">{{activity.views}}</span>
+                </p>
+                <p>
+                    <i class="fa fa-clock-o ml-2" aria-hidden="true"></i> <span class="ml-2">{{timeAgo
+                        activity.updatedAt}}</span>
+                </p>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Comentarios</h3>
+                <button class="btn btn-info" id="btn-toggle-comment">
+                    <i class="fa fa-comment-o"></i> ¡Haz un comentario!
+                </button>
+            </div>
+            <div class="card-body">
+                <blockquote id="post-comment">
+                    <!-- Encargado de crear peticion para guardar el comentario -->
+                    <form action="/activity/{{activity._id}}/comment" method="POST">
+                        {{!-- <div class="form-group">
+                            <input type="text" class="form-control" name="name" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="email" placeholder="Email">
+                        </div> --}}
+                        <div class="form-group">
+                            <textarea rows="2" class="form-control" name="comment"
+                                placeholder="Cuenta tu experiencia en esta actividad"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" id="btn-comment">
+                                <i class="fa fa-comment"></i> Comentar
+                            </button>
+                        </div>
+                    </form>
+                </blockquote>
+                <ul class="list-group p-4">
+                    {{#each comments}}
+                    <li class="list-group-item">
+                        <div class="row">
+                            <a href="#" class="col text-center">
+                                <img class="img-fluid rounded-circle imgGravatar2" src="http://gravatar.com/avatar/{{gravatar}}?d=monsterid&s=45" alt="">
+                            </a>
+                            <blockquote class="col">
+                                <p class="lead">{{comment}}</p>
+                                <footer class="blockquote-footer">
+                                    {{name}} - {{timeAgo createdAt}}
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        {{>stats}}
+        {{>popular}}
+        {{>comments}}
+    </div>
+</div>

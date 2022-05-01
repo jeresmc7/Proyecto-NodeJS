@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+:root {
+    --clr-neutral-900: hsl(207, 19%, 9%);
+    --clr-neutral-100: #f2f2f2;
+    --clr-accent-400: #375a7f;
+    --clr-accent-200: #5585b8;
+    --clr-dark: #303030;
+    --secondary: #444;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+  }
+
+html {
+    box-sizing: border-box;
+  }
+
+.logo {
+    width: 40%;
+}
+
+/* ----------------------- ABOUT ---------------------------------- */
+/* *, *::before, *::after {
+    box-sizing: border-box;
+} */
+
+body {
+    font-size: 1em;
+    font-family: 'Quicksand', sans-serif;
+     /*Contain Que sea lo mas grande posible depende de la imagen*/
+    /* Cover Rellenar toda la caja pero siempre se empieza a dibujar desde la superior izquierda, corregir con background position*/
+    /* Auto Pone el tamano original de la imagen*/
+}
+
+#main-container {
+    padding-top: 70px;
+    width: 100%;
+    overflow: hidden;
+    margin-right: 0px;
+    position: relative; /*add to inline style or make a class for this parent div*/
+    background: linear-gradient(to bottom, rgba(45, 50, 62, 0.8) 0%, rgba(29, 32, 41, 0.8) 100%);
+}
+
+#portfolio {
+  margin-top: 3.2rem;
+}
+
+#indexTitle {
+  background: linear-gradient(to right, rgba(60, 67, 83, 0.8) 0%, rgba(37, 41, 52, 0.8) 100%);
+}
+
+.titleRos1 {
+    margin: 0;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+.titleRos1 span {
+    font-weight: 300;
+}
+
+.titleRos2 {
+  margin: 0;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.titleRos2 span {
+  font-weight: 300;
+}
+
+/* .jumbotron{
+    /* background: url("/public/img/Escalinata-Parq-Espa.jpg") no-repeat;  
+    -webkit-background-size: 50% 100%;
+    -moz-background-size: 50% 100%;
+    -o-background-size: 50% 100%;
+    background-size: 50% 100%;
+    /* clip-path: polygon(50% 0%, 100% 99%, 0 100%, 0 0);
+} */
+
+/* .btn:hover {
+  transform: scale(1.05);
+} */
+
+.indexLinkMuni {
+    /* padding: 140px 0; */
+    background-image: linear-gradient(to bottom, rgba(53, 69, 105, 0.6) 0%, rgba(31, 39, 59, 0.6) 100%), url("../img/imagenesRosario/MonumentoGrande.jpg");  
+    background-size: cover;
+    background-position: center;
+    /* clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0% 50%); */
+}
+
+.indexLinkMerc {
+  /* padding: 140px 0; */
+  background-image: linear-gradient(to bottom, rgba(53, 69, 105, 0.6) 0%, rgba(31, 39, 59, 0.6) 100%), url("../img/imagenesRosario/Mercado.jpg");
+  background-size: cover;
+  background-position: center;
+  /* clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0% 50%); */
+}
+
+.indexLinkUser {
+    /* padding: 140px 0; */
+    background-image: linear-gradient(to bottom, rgba(53, 69, 105, 0.6) 0%, rgba(31, 39, 59, 0.6) 100%), url("../img/imagenesRosario/Escaleras.jpg");
+    background-size: cover;
+    background-position: center;
+    /* clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0% 50%); */
+}
+
+.closer {
+  margin: 0.5px
+}
+
+.box {
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    background-clip: content-box;
+    margin: 20px auto;
+    background-image: url(../img/jsLogo.png);
+    background-size: contain;
+    /* background-size: 100% 100%; */
+    background-position: center;
+}
+
+.parallax {
+    font-size: 2em;
+    padding: 2em 0;
+    background-image: url(../img/fondo-tecnologico-preferido-selectores.jpg);
+    background-size: cover;
+    background-attachment: fixed; /*Fija la imagen aunque scrolees*/
+    background-repeat: no-repeat;
+    background-position: right top; /*que parte de la imagen se ve cuando achicas la pantalla*/
+    text-align: center;
+}
+
+.about {
+    font-size: 2em;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.alert {
+    width: 50%;
+    margin: 2px auto 8px;
+    text-align: center;
+    font-size: 20px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    :root {
+      scroll-behavior: smooth;
+    }
+  }
+  
+  hr {
+    margin: 1rem 0;
+    color: inherit;
+    background-color: currentColor;
+    border: 0;
+    opacity: 0.25;
+  }
+  
+  hr:not([size]) {
+    height: 1px;
+  }
+  
+  /* .masthead {
+    background: linear-gradient(to bottom, rgba(66, 74, 92, 0.8) 0%, rgba(66, 74, 92, 0.8) 100%), url("../img/ImagenesRosario/RosarioNoche.jpg");
+    padding-top: 10rem;
+    padding-bottom: calc(10rem - 4.5rem);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    height: 100vh;
+  }
+  .masthead h1, .masthead .h1 {
+    font-size: 2.25rem;
+  }
+  @media (min-width: 992px) {
+    .masthead {
+      height: 100vh;
+      min-height: 40rem;
+      padding-top: 4.5rem;
+      padding-bottom: 0;
+    }
+    .masthead p {
+      font-size: 1.15rem;
+    }
+    .masthead h1, .masthead .h1 {
+      font-size: 3rem;
+    }
+  }
+  @media (min-width: 1200px) {
+    .masthead h1, .masthead .h1 {
+      font-size: 3.5rem;
+    }
+  } */
+  
+ .portfolio-box {
+    position: relative;
+    display: flex;
+    height: 400px;
+  }
+.portfolio-box .portfolio-box-caption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    opacity: 0;
+    color: rgba(255, 255, 255, 0.91);
+    background: linear-gradient(to bottom, rgba(56, 120, 231, 0.5) 0%, rgba(36, 80, 155, 0.5) 100%);
+    transition: opacity 0.25s ease;
+  }
+
+ .portfolio-box .portfolio-box-caption {
+    font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: .7;
+  }
+ .portfolio-box .portfolio-box-caption .project-name {
+    font-size: 1rem;
+  }
+ .portfolio-box:hover .portfolio-box-caption {
+    opacity: .9;
+    background: linear-gradient(to bottom, rgba(39, 85, 164, 0.5) 0%, rgba(36, 80, 155, 0.5) 100%);
+  }
+
+  @media (max-width: 768px) {
+    .portfolio-box .portfolio-box-caption {
+      font-size: 1rem;
+      opacity: .7;
+      background: linear-gradient(to bottom, rgba(56, 120, 231, 0.5) 0%, rgba(29, 64, 126, 0.5) 100%);
+    }
+    .portfolio-box .portfolio-box-caption .project-name {
+      font-size: .80rem;
+    }
+
+    #portfolio {
+      margin-top: 3rem;
+    }
+  }
+
+
+.imgGravatar {
+    height: 75px;
+}
+
+.imgGravatar2 {
+  height: 55px;
+}

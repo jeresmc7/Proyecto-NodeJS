@@ -1,0 +1,17 @@
+<div class="card mb-2">
+    <div class="card-header">
+        <h5><i class="fa fa-fire" aria-hidden="true"></i> Más recomendadas</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            {{#each sidebar.popular}}
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                    {{!-- <p>{{name}}</p> --}}
+                    <a href="/activity/{{_id}}">
+                        <img src="/public/upload/{{pictureFileName}}" class="w-100 h-100 img-thumbnail" style="max-height: 150px;">
+                    </a>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,159 @@
+<div class="row">
+    <div class="col-md-9">
+        <div id="indexTitle"
+            class="shadow d-flex justify-content-center align-items-center p-3 mb-2 bg-dark rounded-lg flex-column">
+            <h2>Actividades de usuarios</h2>
+        </div>
+        <form action="/activities-users/all" method="POST" id="filter">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-lg-4">
+
+                    {{!-- Por ahora esto queda con DatePicker, despues veremos como lo hacemos bien --}}
+                    <div class="form-group">
+                        Desde:
+                        <div class="input-group date mydatepicker">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Fecha desde" name="dateFrom"
+                                value="{{dateFrom}}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        Hasta:
+                        <div class="input-group date mydatepicker">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Fecha hasta" name="dateTo"
+                                value="{{dateTo}}">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="form-group">
+                        Categoría:
+                        {{!-- {{tagsRender.[0].actualTag}} --}}
+                        <select class="form-control" form="filter" name="tag">
+                            {{#ifCond tagsRender.[0].actualTag '==' 'Todas'}}
+                            <option selected>Todas</option>
+                            {{else}}
+                            <option>Todas</option>
+                            {{/ifCond}}
+
+                            {{#each tagsRender}}
+                            {{#ifCond actualTag '==' name}}
+                            <option value={{id}} selected>{{name}}</option>
+                            {{else}}
+                            <option value={{id}}>{{name}}</option>
+                            {{/ifCond}}
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        Título:
+                        <input class="form-control" type="name" name="textFilter" placeholder="Buscar por título">
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <button id="btnSearch" class="btn btn-primary btn-block mb-4">Buscar <i class="fa fa-search"
+                            aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Dibuja todos las actividades que aun no se realizaron -->
+        <div class="card mb-2">
+            <div class="card-header mb-1">
+                <h3>Próximas actividades</h3>
+            </div>
+            <div class="row pr-1 pl-1">
+                {{#if emptyActivites}}
+                <h4 class="my-4"> -- No hay actividades programadas</h4>
+                {{else}}
+                {{#each activities}}
+                {{#if banned}}
+
+                {{else}}
+
+                <!-- Bucle de handlebar (NO HTML) -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card activity mb-4"
+                        style="background-image: url('/public/upload/{{pictureFileName}}');">
+                        <div class="infoDate"> {{format dFrom}} </div>
+                        <div class="card-content activity">
+                            <h2 class="card-title activity">
+                                {{name}}
+                            </h2>
+                            <p class="card-body activity truncate-text">
+                                {{{description}}}
+                            </p>
+                            <a href="/activity/{{_id}}" class="button activity">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+                {{/each}}
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <a href="/activities-users/past" class="button p-4 my-2 activity"> <i class="fa fa-backward"
+                        aria-hidden="true"></i> Explora actividades pasadas</a>
+
+            </div>
+
+            <div class="col-md-6 text-center mb-2">
+
+                <a href="/activities/add" class="button p-4 my-2 activity"> <i class="fa fa-plus-circle"
+                        aria-hidden="true"></i> Crea tu propia actividad</a>
+
+            </div>
+        </div>
+
+
+
+        {{!--
+        <!-- Dibuja todos las actividades que ya se realizaron -->
+        <div class="card">
+            <div class="card-header mb-1">
+                <h3>Actividades pasadas</h3>
+            </div>
+            <div class="row pr-1 pl-1">
+                {{#each activitiesPassed}}
+                <!-- Bucle de handlebar (NO HTML) -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card activity mb-4"
+                        style="background-image: url('/public/upload/{{pictureFileName}}');">
+                        <div class="infoDate"> {{format dFrom}} </div>
+                        <div class="card-content activity">
+                            <h2 class="card-title activity">
+                                {{name}}
+                            </h2>
+                            <p class="card-body activity truncate-text">
+                                {{{description}}}
+                            </p>
+                            <a href="/activity/{{_id}}" class="button activity">Ver mas</a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div> --}}
+
+        {{!-- <img src="/public/upload/{{pictureFileName}}" alt="" class="w-100 h-100 img-thumbnail"> --}}
+
+    </div>
+    <div class="col-md-3">
+        {{>stats}}
+        {{>popular}}
+        {{>comments}}
+    </div>
+</div>

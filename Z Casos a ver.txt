@@ -1,0 +1,14 @@
+{ actID: '127168', occurID: '127305' }
+
+{ actID: '114324', occurID: '144213' }
+
+{ actID: '106019', occurID: '144188' }
+
+{ actID: '128201', occurID: '142106' }
+
+{ actID: '132445', occurID: '132589' }
+
+{ actID: '152227', occurID: '152330' }
+
+https://ws.rosario.gob.ar/web/api/v1.0/ocurrencias?filter[dateFull][value][0]=2021-12-13&filter[dateFull][operator][0]=%22%3E=%22&filter[dateFull][value][1]=2021-12-15&filter[dateFull][operator][1]=%22%3C=%22&filter[eventual_distrito]=438
+

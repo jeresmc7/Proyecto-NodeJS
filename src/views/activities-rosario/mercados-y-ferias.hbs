@@ -1,0 +1,20 @@
+<div id="indexTitle" class="shadow d-flex justify-content-center align-items-center p-3 mb-2 bg-dark rounded-lg flex-column">
+    <h2>Mercados y ferias</h2>
+</div>
+<div class="row">
+    {{#each mercados}}
+    <div class="col-lg-4 col-sm-6 col-12">
+        <div class="shadow d-flex justify-content-center align-items-center p-3 mb-2 bg-dark rounded-lg flex-column">
+            <div class="my-2">
+                <h4 class="text-white">{{name}}</h4>
+            </div>
+            <div>
+                <h6><i class="fa fa-map-marker" aria-hidden="true"></i> {{direccion}}</h6>
+                <h6><i class="fa fa-clock-o" aria-hidden="true"></i> {{atencion}}</h6>
+                <h6><i class="fa fa-phone" aria-hidden="true"></i> <i class="fa fa-envelope-o" aria-hidden="true"></i> {{{contactos}}}</h6>
+                <a href="https://infomapa.rosario.gob.ar/emapa/movil.html?x={{coordenada_ref_x}}&y={{coordenada_ref_y}}">Ver en mapa</a>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>

@@ -1,0 +1,76 @@
+{{!-- Esta es mi plantilla --}}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Api Node.js</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/public/img/favicon.ico" />
+    <!-- BOOSTRAP 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <!-- DATE PICKER -->
+    <link href="/public/datepicker/css/bootstrap-datepicker.css" rel="stylesheet">
+    <!-- DATE TIME PICKER -->
+    <link href="/public/datetimepicker/css/jquery.datetimepicker.min.css" rel="stylesheet">
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/index.css">
+    <link rel="stylesheet" href="/public/css/navbar.css">
+    <link rel="stylesheet" href="/public/css/signUp.css">
+    <link rel="stylesheet" href="/public/css/cardActivity.css">
+</head>
+
+<body>
+
+    <!-- Importa un partial de nombre navigation -->
+    {{>navigation}}
+
+    <main id="main-container">
+
+        {{>messages}}
+        {{>errors}}
+        {{{ body }}}
+        <!-- aca se incrustan las plantillas -->
+        <!-- Importa un partial de nombre footer -->
+        {{>footer}}
+    </main>
+
+
+
+    <!-- BOOSTRAP 4 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <!-- SimpleLightbox plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+    <!-- DATE PICKER -->
+    <script src="/public/datepicker/js/bootstrap-datepicker.min.js" charset="UTF-8"></script>
+    <!-- DATE TIME PICKER -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"
+        integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/public/datetimepicker/js/jquery.datetimepicker.full.min.js" charset="UTF-8"></script>
+    <!-- Scroll Reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- Email -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <!-- CUSTOM JS -->
+    <script src="/public/js/scripts.js"></script>
+    <script src="/public/js/navbar.js"></script>
+
+</body>
+
+</html>

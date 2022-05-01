@@ -1,0 +1,36 @@
+<div class="headerNavbar" id="mainNav">
+  <div class="containerNavbar">
+
+    <a class="navbar-brand" href="/">
+      <h1 class="logoNavbar">Rosario<span>Activa</span></h1>
+    </a>
+
+    {{#if user}}
+    <span class="userNavbar"><i class="fa fa-user-circle-o"></i> {{userEmail user}}</span>
+    {{/if}}
+
+    <nav class="site-navbar">
+      <ul>
+        {{!-- <li><a href=""><i class="fa fa-home site-navbar--icon"></i>Home</a></li> --}}
+        <li><a href="/about"><i class="fa fa-info site-navbar--icon"></i>Sobre Nosotros</a></li>
+        {{#if user}}
+
+        {{!-- NO SE COMO PERO ACA HABRIA QUE TRAER EL NOMBRE Y/O APELLIDO DEL USUARIO PARA MOSTRARLO--}}
+        <li><a href="/activities/add"><i class="fa fa-pencil site-navbar--icon"></i>Agregar Actividad</a></li>
+        <li><a href="/activities"><i class="fa fa-fire site-navbar--icon"></i>Mis Actividades</a></li>
+        <li><a href="/logout"><i class="fa fa-sign-out site-navbar--icon"></i>Salir</a></li>
+        {{else}}
+        <li><a href="/signin"><i class="fa fa-sign-in site-navbar--icon"></i>Ingresar</a></li>
+        <li><a href="/signup"><i class="fa fa-user-circle-o site-navbar--icon"></i>Registrarse</a></li>
+        {{/if}}
+
+      </ul>
+    </nav>
+
+    <div class="menu-toggle">
+      <div class="hamburger"></div>
+    </div>
+
+  </div>
+
+</div>

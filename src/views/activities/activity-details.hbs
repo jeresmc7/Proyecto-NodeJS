@@ -1,0 +1,82 @@
+<h2>Actividad: {{activity.name}}</h2>
+<br>
+<br>
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4>Inscriptos a la actividad <i class="fa fa-id-card" aria-hidden="true"></i></h4>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    {{#each usrsReg}}
+                    <div class="col-12 col-sm-6 col-lg-4">
+
+                        <div class="shadow d-flex justify-content-center align-items-center p-3 mb-2 bg-dark rounded-lg flex-column">
+                            <div class="person-img">
+                                <img class="img-fluid rounded-circle imgGravatar" src="http://gravatar.com/avatar/{{gravatar}}?d=wavatar&s=100"
+                                alt="Card image cap">
+                            </div>
+                            <div class="my-2">
+                                <h4 class="text-white">{{name}}</h4>
+                            </div>
+                            <div>
+                                <h6><i class="fa fa-envelope-o" aria-hidden="true"></i> {{email}}</h6>
+                                <h6><i class="fa fa-phone" aria-hidden="true"></i> {{tel}}</h6>
+                            </div>
+                        </div>
+
+
+
+                        {{!-- <div class="card">
+                            <img class="card-img-top" src="http://gravatar.com/avatar/{{gravatar}}?d=monsterid&s=45"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{name}}</h5>
+                                <p class="card-text"><i class="fa fa-envelope-o" aria-hidden="true"></i> {{email}}</p>
+                                <p class="card-text"><i class="fa fa-phone" aria-hidden="true"></i> {{tel}}</p>
+                            </div>
+                        </div> --}}
+
+                        {{!-- {{#each usrsReg}}
+                        <p>Nombre: {{name}}</p>
+                        <p>Email: {{email}}</p>
+                        <p>Teléfono: {{tel}}</p>
+                        <a href="#" class="col text-center">
+                            <img src="http://gravatar.com/avatar/{{gravatar}}?d=monsterid&s=45" alt="">
+                        </a>
+                        {{/each}} --}}
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header d-flex  align-items-center">
+                <h4>Likes <i class="fa fa-heart" aria-hidden="true"></i></h4>
+            </div>
+            <div class="card-body">
+                {{#each usrsLike}}
+                <h4>{{name}}</h4>
+                <hr>
+                {{/each}}
+            </div>
+        </div>
+        <div class="card mt-1">
+            <div class="card-header d-flex  align-items-center">
+                <h4>Denuncias <i class="fa fa-bullhorn" aria-hidden="true"></i></h4>
+            </div>
+            <div class="card-body">
+                {{#each usrsReport}}
+                <h4>{{name}}</h4>
+                <hr>
+                {{/each}}
+            </div>
+        </div>
+
+    </div>
+</div>

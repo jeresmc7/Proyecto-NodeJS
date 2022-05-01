@@ -1,0 +1,41 @@
+<div class="col-12 col-sm-6 col-lg-4">
+    <div class="form-group">
+        Categoría: 
+        {{!-- {{tagsRender.[0].actualTag}} --}}
+        <select class="form-control" form="filter" name="tag">
+            {{#ifCond tagsRender.[0].actualTag '==' 'Todas'}}
+            <option selected>Todas</option>
+            {{else}}
+            <option>Todas</option>
+            {{/ifCond}}
+
+            {{#each tagsRender}}
+            {{#ifCond actualTag '==' name}}
+            <option value={{id}} selected>{{name}}</option>
+            {{else}}
+            <option value={{id}}>{{name}}</option>
+            {{/ifCond}}
+            {{/each}}
+        </select>
+    </div>
+    <div class="form-group">
+        Zona: 
+        {{!-- {{districtsRender.[0].actualDistrict}} --}}
+        <select class="form-control" form="filter" name="place">
+            {{#ifCond districtsRender.[0].actualDistrict '==' 'Todos'}}
+            <option selected>Todos</option>
+            {{else}}
+            <option>Todos</option>
+            {{/ifCond}}
+
+
+            {{#each districtsRender}}
+            {{#ifCond actualDistrict '==' attributes.name}}
+            <option value={{attributes.id}} selected>{{attributes.name}}</option>
+            {{else}}
+            <option value={{attributes.id}}>{{attributes.name}}</option>
+            {{/ifCond}}
+            {{/each}}
+        </select>
+    </div>
+</div>

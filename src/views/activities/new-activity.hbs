@@ -1,0 +1,83 @@
+<div class="col-md-4 mx-auto">
+    <div class="card text-center">
+        <div class="card-header">
+            <h3><i class="fa fa-plus" aria-hidden="true"></i> Nueva Actividad</h3>
+        </div>
+        <div class="card-header">
+            <h6 class="my-2">Si quieres crear una actividad que se realiza periódicamente, puedes crearla una
+                vez, luego cuando esta finalice, entrar en "Mis actividades" y darle click en "Volver a organizar esta actividad". Aclara todo lo necesario en la Descripción </h6>
+            <h6 class="my-2">O bien puedes crear una actividad por cada fecha que en que se realizara la misma</h6>
+        </div>
+
+        <div class="card-body">
+            <form action="/activities/new-activity" method="POST" enctype="multipart/form-data" id="filter">
+                <div class="form-group">
+                    Título
+                    <input type="text" name="name" class="form-control" placeholder="Título" autofocus required>
+                </div>
+                <div class="form-group">
+                    Descripción
+                    <textarea name="description" placeholder="Descripción" rows="2" class="form-control"
+                        required></textarea>
+                </div>
+                <div class="form-group">
+                    Lugar de la actividad
+                    <input type="text" name="place" class="form-control" placeholder="Lugar de la actividad" required>
+                </div>
+
+                <div class="form-group">
+                    Categoría:
+                    <select class="form-control" form="filter" name="category">
+                        <option value="99999" selected>Todas</option>
+                        {{#each tagsRender}}
+                        <option value={{id}}>{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="formControlRange">Cantidad máxima de personas</label>
+                    <input type="range" id="rangeInput" name="maxPeople" min="0" max="10" value="0"
+                        oninput="amount.value=rangeInput.value" required>
+
+                    <output id="amount" name="amount" for="rangeInput">0</output>
+                </div>
+
+                <div class="form-group">
+                    Fecha desde
+                    <div class='input-group'>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        </div>
+                        <input size="16" type="text" class="form-control" id="datetimepickerFrom"
+                            placeholder="Fecha desde" name="dFrom" readonly required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    Fecha hasta
+                    <div class='input-group'>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        </div>
+                        <input size="16" type="text" class="form-control" id="datetimepickerTo"
+                            placeholder="Fecha hasta" name="dTo" readonly required>
+                    </div>
+                </div>
+                <!-- No es lo mismo cargar imagenes que texto -->
+                <!-- Esto es para cargar imagenes -->
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" name="image" class="custom-file-input" id="inputGroup">
+                            <label class="custom-file-label" for="inputGroup">Cargar una foto</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block">Publicar actividad</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

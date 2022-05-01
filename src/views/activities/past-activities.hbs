@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-md-9">
+
+        <!-- Dibuja todos las actividades que ya se realizaron -->
+        <div class="card">
+            <div class="card-header mb-1">
+                <h3>Actividades pasadas</h3>
+            </div>
+            <div class="row pr-1 pl-1">
+                {{#if emptyActivites}}
+                <h4> -- No hay actividades para mostrar</h4>
+                {{else}}
+                {{#each activitiesPassed}}
+                <!-- Bucle de handlebar (NO HTML) -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card activity mb-4"
+                        style="background-image: url('/public/upload/{{pictureFileName}}');">
+                        <div class="infoDate"> {{format dFrom}} </div>
+                        <div class="card-content activity">
+                            <h2 class="card-title activity">
+                                {{name}}
+                            </h2>
+                            <p class="card-body activity truncate-text">
+                                {{{description}}}
+                            </p>
+                            <a href="/activity/{{_id}}" class="button activity">Ver mas</a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <a href="/activities-users/all" class="button p-4 my-2 activity"> <i class="fa fa-forward"
+                        aria-hidden="true"></i> Explora las próximas actividades</a>
+
+            </div>
+
+            <div class="col-md-6 text-center mb-2">
+
+                <a href="/activities/add" class="button p-4 my-2 activity"> <i class="fa fa-plus-circle"
+                        aria-hidden="true"></i> Crea tu propia actividad</a>
+
+            </div>
+        </div>
+
+        {{!-- <img src="/public/upload/{{pictureFileName}}" alt="" class="w-100 h-100 img-thumbnail"> --}}
+
+    </div>
+    <div class="col-md-3">
+        {{>stats}}
+        {{>popular}}
+        {{>comments}}
+    </div>
+</div>

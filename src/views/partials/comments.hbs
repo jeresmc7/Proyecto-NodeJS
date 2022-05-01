@@ -1,0 +1,29 @@
+{{#if sidebar.comments}}
+<div class="card mt-2">
+    <div class="card-header">
+        <h5><i class="fa fa-comments" aria-hidden="true"></i> Últimos comentarios</h5>
+    </div>
+    <div class="card-body">
+        {{#each sidebar.comments}}
+        <div class="row">
+            <div class="col">
+                <a href="/activity/{{activityObjet._id}}">
+                    <!-- Propiedad virtual -->
+                    <img src="/public/upload/{{activityObjet.pictureFileName}}" class="img-thumbnail w-100" style="max-height: 150px;">
+                </a>
+            </div>
+            <div class="col">
+                <blockquote class="w-100">
+                    <p>{{comment}}</p>
+                    <footer class="blockquote-footer">
+                        <span>{{name}}</span>
+                        <span>{{timeAgo createdAt}}</span>
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
+        {{!-- <p>{{name}}</p> --}}
+        {{/each}}
+    </div>
+</div>
+{{/if}}
